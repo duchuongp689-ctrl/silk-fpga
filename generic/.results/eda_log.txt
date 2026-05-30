@@ -1,23 +1,18 @@
 === BẮT ĐẦU SILK-EDA ===
-✅ Top Module: systolic2x2
-✅ Testbench: tb_systolic2x2
+✅ Top Module: insertion_sort
+✅ Testbench: tb_insertion_sort
 === 1/4: Đang kiểm tra lỗi cú pháp và logic (Linting) ===
 /usr/local/bin/entrypoint.sh: line 23: 1: command not found
-✅ Code RTL vượt qua Verilator Linting.
-=== 1/4: Đang tạo Module Documentation ===
-=== 2/4: Đang tổng hợp Netlist và FSM bằng Yosys ===
-=== 3/4: Đang vẽ Schematic và FSM ===
-=== 4/4: Đang mô phỏng ===
-VCD info: dumpfile sim/waveform.vcd opened for output.
-----------------------------------------
-Time: 80000 | Negedge Data Push Test Results:
-Matrix C = A * B
-Calculated C = [  3    7]
-               [  5   12]
-Expected   C = [3   7]
-               [5  12]
-Status: PASSED
-----------------------------------------
-tb/tb_systolic2x2.v:88: $finish called at 100000 (1ps)
-✅ Đã tạo Waveform trong thư mục sim/
-🎉 HOÀN TẤT !
+%Warning-MULTITOP: rtl/insertion_sort.v:1:8: Multiple top level modules
+                                           : ... Suggest see manual; fix the duplicates, or use --top-module to select top.
+                   ... For warning description see https://verilator.org/warn/MULTITOP?v=5.020
+                   ... Use "/* verilator lint_off MULTITOP */" and lint_on around source to disable this message.
+                                           : ... Top module 'systolic2x2'
+    1 | module systolic2x2(
+      |        ^~~~~~~~~~~
+                                           : ... Top module 'insertion_sort'
+    1 | module insertion_sort
+      |        ^~~~~~~~~~~~~~
+%Error: Exiting due to 1 warning(s)
+❌ LỖI: Có lỗi rồi!
+Hãy đọc kỹ log cảnh báo (Error/Warning) ở trên, sửa lỗi và push lại.
