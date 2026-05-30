@@ -1,4 +1,3 @@
-//TOP_MODULE = systolic2x2
 TOP_MODULE = insertion_sort
-//TB_NAME = tb_systolic2x2
+
 TB_NAME = tb_insertion_sort
