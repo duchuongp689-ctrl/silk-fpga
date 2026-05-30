@@ -37,12 +37,11 @@ module tb_insertion_sort;
       #(CLK_PERIOD/2) clk = ~clk;
   end
 
-  initial
-  begin
-    $dumpfile("tb_insertion_sort.vcd");
-    $dumpvars(0, tb_insertion_sort);
-  end
-
+   initial begin
+        // file dạng sóng sẽ được tạo tự động trong thư mục **sim**.
+        $dumpfile("sim/waveform.vcd");
+     $dumpvars(0, tb_insertion_sort);
+ end
   task reset_dut;
     begin
       @(negedge clk);
