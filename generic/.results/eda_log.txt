@@ -8,7 +8,7 @@
 === 2/4: Đang tổng hợp Netlist và FSM bằng Yosys ===
 === 3/4: Đang vẽ Schematic và FSM ===
 === 4/4: Đang mô phỏng ===
-VCD info: dumpfile tb_insertion_sort.vcd opened for output.
+VCD info: dumpfile sim/waveform.vcd opened for output.
 PASS: CASE 1: valid=1, din bi nhieu giua chu ky | result = [1 2 4 5]
 PASS: CASE 2: valid_in bi nhieu giua chu ky | result = [1 3 7 9]
 PASS: CASE 3: dung giua chung roi dich tiep | result = [1 3 7 9]
@@ -23,6 +23,6 @@ TOTAL TESTS = 9
 TOTAL ERRORS = 0
 ----------------------------------------
 ALL TESTS PASSED
-tb/tb_insertion_sort.v:400: $finish called at 816000 (1ps)
+tb/tb_insertion_sort.v:399: $finish called at 816000 (1ps)
 ✅ Đã tạo Waveform trong thư mục sim/
 🎉 HOÀN TẤT !

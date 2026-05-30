@@ -271,6 +271,6 @@ Found and reported 0 problems.
 7. Executing JSON backend.
 
 Warnings: 1 unique messages, 1 total
-End of script. Logfile hash: 7a01fe33a2, CPU: user 0.02s system 0.00s, MEM: 10.11 MB peak
+End of script. Logfile hash: 7a01fe33a2, CPU: user 0.02s system 0.00s, MEM: 10.03 MB peak
 Yosys 0.33 (git sha1 2584903a060)
-Time spent: 25% 7x opt_expr (0 sec), 24% 6x opt_clean (0 sec), ...
+Time spent: 24% 7x opt_expr (0 sec), 23% 6x opt_clean (0 sec), ...
