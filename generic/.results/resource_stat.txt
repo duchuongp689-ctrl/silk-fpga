@@ -1,71 +1,65 @@
 5. Printing statistics.
 
-=== pe ===
+=== $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100 ===
 
-   Number of wires:                 19
-   Number of wire bits:             83
-   Number of public wires:           7
-   Number of public wire bits:      27
+   Number of wires:                 34
+   Number of wire bits:             64
+   Number of public wires:          12
+   Number of public wire bits:      24
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                  9
-     $add                            1
-     $dff                            3
+   Number of cells:                 15
+     $and                            3
+     $dff                            2
      $logic_not                      1
-     $mul                            1
-     $mux                            3
+     $lt                             1
+     $mux                            8
 
-=== systolic2x2 ===
+=== insertion_sort ===
 
-   Number of wires:                 52
-   Number of wire bits:            217
-   Number of public wires:          27
-   Number of public wire bits:     121
+   Number of wires:                 11
+   Number of wire bits:            140
+   Number of public wires:          10
+   Number of public wire bits:     139
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                 20
-     $add                            1
-     $dff                            1
-     $eq                             8
-     $logic_not                      1
-     $mux                            1
-     $pmux                           4
-     pe                              4
+   Number of cells:                 10
+     $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100      9
+     $reduce_and                     1
 
 === design hierarchy ===
 
-   systolic2x2                       1
-     pe                              4
+   insertion_sort                    1
+     $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100      9
 
-   Number of wires:                128
-   Number of wire bits:            549
-   Number of public wires:          55
-   Number of public wire bits:     229
+   Number of wires:                317
+   Number of wire bits:            716
+   Number of public wires:         118
+   Number of public wire bits:     355
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                 52
-     $add                            5
-     $dff                           13
-     $eq                             8
-     $logic_not                      5
-     $mul                            4
-     $mux                           13
-     $pmux                           4
+   Number of cells:                136
+     $and                           27
+     $dff                           18
+     $logic_not                      9
+     $lt                             9
+     $mux                           72
+     $reduce_and                     1
 
 6. Executing PREP pass.
 
 6.1. Executing HIERARCHY pass (managing design hierarchy).
 
 6.1.1. Analyzing design hierarchy..
-Top module:  \systolic2x2
-Used module:     \pe
+Top module:  \insertion_sort
+Used module:     $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100
 
 6.1.2. Analyzing design hierarchy..
-Top module:  \systolic2x2
-Used module:     \pe
+Top module:  \insertion_sort
+Used module:     $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100
 Removed 0 unused modules.
 
 6.2. Executing PROC pass (convert processes to netlists).
@@ -99,200 +93,184 @@ Converted 0 switches.
 Cleaned up 0 empty switches.
 
 6.2.12. Executing OPT_EXPR pass (perform const folding).
-Optimizing module pe.
-Optimizing module systolic2x2.
+Optimizing module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module insertion_sort.
 
 6.3. Executing OPT_EXPR pass (perform const folding).
-Optimizing module pe.
-Optimizing module systolic2x2.
+Optimizing module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module insertion_sort.
 
 6.4. Executing OPT_CLEAN pass (remove unused cells and wires).
-Finding unused cells or wires in module \pe..
-Finding unused cells or wires in module \systolic2x2..
-Removed 2 unused cells and 22 unused wires.
-<suppressed ~4 debug messages>
+Finding unused cells or wires in module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module \insertion_sort..
+Removed 1 unused cells and 14 unused wires.
+<suppressed ~3 debug messages>
 
 6.5. Executing CHECK pass (checking for obvious problems).
-Checking module pe...
-Checking module systolic2x2...
+Checking module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100...
+Checking module insertion_sort...
 Found and reported 0 problems.
 
 6.6. Executing OPT pass (performing simple optimizations).
 
 6.6.1. Executing OPT_EXPR pass (perform const folding).
-Optimizing module pe.
-Optimizing module systolic2x2.
+Optimizing module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module insertion_sort.
 
 6.6.2. Executing OPT_MERGE pass (detect identical cells).
-Finding identical cells in module `\pe'.
-Finding identical cells in module `\systolic2x2'.
-<suppressed ~15 debug messages>
-Removed a total of 5 cells.
+Finding identical cells in module `$paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `\insertion_sort'.
+Removed a total of 1 cells.
 
 6.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
-Running muxtree optimizer on module \pe..
+Running muxtree optimizer on module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100..
   Creating internal representation of mux trees.
   Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $procmux$17: \valid_reg -> 1'1
   Analyzing evaluation results.
-Running muxtree optimizer on module \systolic2x2..
+Running muxtree optimizer on module \insertion_sort..
   Creating internal representation of mux trees.
-  Evaluating internal representation of mux trees.
-  Analyzing evaluation results.
+  No muxes found in this module.
 Removed 0 multiplexer ports.
-<suppressed ~8 debug messages>
+<suppressed ~3 debug messages>
 
 6.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
-  Optimizing cells in module \pe.
-  Optimizing cells in module \systolic2x2.
-Performed a total of 0 changes.
+  Optimizing cells in module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100.
+  Optimizing cells in module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100.
+  Optimizing cells in module \insertion_sort.
+Performed a total of 1 changes.
 
 6.6.5. Executing OPT_MERGE pass (detect identical cells).
-Finding identical cells in module `\pe'.
-Finding identical cells in module `\systolic2x2'.
+Finding identical cells in module `$paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `\insertion_sort'.
 Removed a total of 0 cells.
 
 6.6.6. Executing OPT_CLEAN pass (remove unused cells and wires).
-Finding unused cells or wires in module \pe..
-Finding unused cells or wires in module \systolic2x2..
-Removed 0 unused cells and 5 unused wires.
+Finding unused cells or wires in module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module \insertion_sort..
+Removed 0 unused cells and 2 unused wires.
 <suppressed ~1 debug messages>
 
 6.6.7. Executing OPT_EXPR pass (perform const folding).
-Optimizing module pe.
-Optimizing module systolic2x2.
+Optimizing module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module insertion_sort.
 
 6.6.8. Rerunning OPT passes. (Maybe there is more to do..)
 
 6.6.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
-Running muxtree optimizer on module \pe..
+Running muxtree optimizer on module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100..
   Creating internal representation of mux trees.
   Evaluating internal representation of mux trees.
   Analyzing evaluation results.
-Running muxtree optimizer on module \systolic2x2..
+Running muxtree optimizer on module \insertion_sort..
   Creating internal representation of mux trees.
-  Evaluating internal representation of mux trees.
-  Analyzing evaluation results.
+  No muxes found in this module.
 Removed 0 multiplexer ports.
-<suppressed ~8 debug messages>
+<suppressed ~3 debug messages>
 
 6.6.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
-  Optimizing cells in module \pe.
-  Optimizing cells in module \systolic2x2.
+  Optimizing cells in module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100.
+  Optimizing cells in module \insertion_sort.
 Performed a total of 0 changes.
 
 6.6.11. Executing OPT_MERGE pass (detect identical cells).
-Finding identical cells in module `\pe'.
-Finding identical cells in module `\systolic2x2'.
+Finding identical cells in module `$paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `\insertion_sort'.
 Removed a total of 0 cells.
 
 6.6.12. Executing OPT_CLEAN pass (remove unused cells and wires).
-Finding unused cells or wires in module \pe..
-Finding unused cells or wires in module \systolic2x2..
+Finding unused cells or wires in module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module \insertion_sort..
 
 6.6.13. Executing OPT_EXPR pass (perform const folding).
-Optimizing module pe.
-Optimizing module systolic2x2.
+Optimizing module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module insertion_sort.
 
 6.6.14. Finished OPT passes. (There is nothing left to do.)
 
 6.7. Executing WREDUCE pass (reducing word size of cells).
-Removed top 1 bits (of 9) from port Y of cell pe.$mul$rtl/systolic2x2.v:145$7 ($mul).
-Removed top 1 bits (of 9) from port B of cell pe.$add$rtl/systolic2x2.v:145$8 ($add).
-Removed top 1 bits (of 9) from wire pe.$mul$rtl/systolic2x2.v:145$7_Y.
-Removed top 31 bits (of 32) from port B of cell systolic2x2.$add$rtl/systolic2x2.v:26$3 ($add).
-Removed top 29 bits (of 32) from port Y of cell systolic2x2.$add$rtl/systolic2x2.v:26$3 ($add).
-Removed top 1 bits (of 3) from port B of cell systolic2x2.$procmux$20_CMP0 ($eq).
-Removed top 1 bits (of 3) from port B of cell systolic2x2.$procmux$21_CMP0 ($eq).
-Removed top 2 bits (of 3) from port B of cell systolic2x2.$procmux$30_CMP0 ($eq).
-Removed top 29 bits (of 32) from wire systolic2x2.$add$rtl/systolic2x2.v:26$3_Y.
 
 6.8. Executing OPT_CLEAN pass (remove unused cells and wires).
-Finding unused cells or wires in module \pe..
-Finding unused cells or wires in module \systolic2x2..
-Removed 0 unused cells and 2 unused wires.
-<suppressed ~2 debug messages>
+Finding unused cells or wires in module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module \insertion_sort..
 
 6.9. Executing MEMORY_COLLECT pass (generating $mem cells).
 
 6.10. Executing OPT pass (performing simple optimizations).
 
 6.10.1. Executing OPT_EXPR pass (perform const folding).
-Optimizing module pe.
-Optimizing module systolic2x2.
+Optimizing module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module insertion_sort.
 
 6.10.2. Executing OPT_MERGE pass (detect identical cells).
-Finding identical cells in module `\pe'.
-Finding identical cells in module `\systolic2x2'.
+Finding identical cells in module `$paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `\insertion_sort'.
 Removed a total of 0 cells.
 
 6.10.3. Executing OPT_CLEAN pass (remove unused cells and wires).
-Finding unused cells or wires in module \pe..
-Finding unused cells or wires in module \systolic2x2..
+Finding unused cells or wires in module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module \insertion_sort..
 
 6.10.4. Finished fast OPT passes.
 
 6.11. Printing statistics.
 
-=== pe ===
+=== $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100 ===
 
-   Number of wires:                 12
-   Number of wire bits:             62
-   Number of public wires:           7
-   Number of public wire bits:      27
+   Number of wires:                 19
+   Number of wire bits:             43
+   Number of public wires:          12
+   Number of public wire bits:      24
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                  8
-     $add                            1
-     $dff                            3
-     $mul                            1
-     $mux                            3
+   Number of cells:                 12
+     $and                            2
+     $dff                            2
+     $lt                             1
+     $mux                            7
 
-=== systolic2x2 ===
+=== insertion_sort ===
 
-   Number of wires:                 32
-   Number of wire bits:            130
-   Number of public wires:          27
-   Number of public wire bits:     121
+   Number of wires:                 10
+   Number of wire bits:            139
+   Number of public wires:          10
+   Number of public wire bits:     139
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                 14
-     $add                            1
-     $dff                            1
-     $eq                             3
-     $mux                            1
-     $pmux                           4
-     pe                              4
+   Number of cells:                 10
+     $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100      9
+     $reduce_and                     1
 
 === design hierarchy ===
 
-   systolic2x2                       1
-     pe                              4
+   insertion_sort                    1
+     $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100      9
 
-   Number of wires:                 80
-   Number of wire bits:            378
-   Number of public wires:          55
-   Number of public wire bits:     229
+   Number of wires:                181
+   Number of wire bits:            526
+   Number of public wires:         118
+   Number of public wire bits:     355
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                 42
-     $add                            5
-     $dff                           13
-     $eq                             3
-     $mul                            4
-     $mux                           13
-     $pmux                           4
+   Number of cells:                109
+     $and                           18
+     $dff                           18
+     $lt                             9
+     $mux                           63
+     $reduce_and                     1
 
 6.12. Executing CHECK pass (checking for obvious problems).
-Checking module pe...
-Checking module systolic2x2...
+Checking module $paramod\ins_sort_pe\DATA_WIDTH=s32'00000000000000000000000000000100...
+Checking module insertion_sort...
 Found and reported 0 problems.
 
 7. Executing JSON backend.
 
 Warnings: 1 unique messages, 1 total
-End of script. Logfile hash: 9d81d63ac5, CPU: user 0.02s system 0.00s, MEM: 10.33 MB peak
+End of script. Logfile hash: 7a01fe33a2, CPU: user 0.02s system 0.00s, MEM: 10.03 MB peak
 Yosys 0.33 (git sha1 2584903a060)
-Time spent: 25% 7x opt_expr (0 sec), 25% 6x opt_clean (0 sec), ...
+Time spent: 24% 7x opt_expr (0 sec), 23% 6x opt_clean (0 sec), ...
