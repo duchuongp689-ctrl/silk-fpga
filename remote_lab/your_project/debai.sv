@@ -111,9 +111,9 @@ module top_module (
       jump_btn_d <= KEY[0];
 
       if (!KEY[0] && !jump_btn_d)
-        jump_req <= 1'b1;
-      else if (frame_tick)
         jump_req <= 1'b0;
+      else if (frame_tick)
+        jump_req <= 1'b1;
     end
   end
 
@@ -248,7 +248,7 @@ module top_module (
         begin
           if (hit)
           begin
-            state <= S_RUN;
+            state <= S_GAME_OVER;
           end
           else
           begin
@@ -263,7 +263,7 @@ module top_module (
         begin
           if (jump_req)
           begin
-            state <= S_RUN;
+            state <= S_IDLE;
             score <= 16'd0;
             speed <= 4'd4;
           end
