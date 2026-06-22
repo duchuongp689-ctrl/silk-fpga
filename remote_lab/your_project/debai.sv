@@ -48,20 +48,12 @@ module top_module (
     else
       game_over_d <= ko_now;
   end
-
-
-
-
-
-
   wire [1:0] red, green, blue;
 
- 
   assign r = red;
   assign g = green;
   assign b = blue;
   assign video_active = visible;
-
 
   // =========================
   // Tham số màn hình / vật thể
@@ -91,14 +83,12 @@ module top_module (
                      .vpos(pixel_y)
                    );
 
-  //assign frame_tick = (pixel_x == 10'd0) && (pixel_y == 10'd0);
+  assign frame_tick = (pixel_x == 10'd0) && (pixel_y == 10'd0);
 
   // =========================
   // Bắt cạnh nút nhảy, rồi giữ yêu cầu nhảy đến frame tiếp theo
   // =========================
   reg jump_btn_d;
-
-
   always @(posedge clk)
   begin
     if (rst)
@@ -110,9 +100,9 @@ module top_module (
     begin
       jump_btn_d <= KEY[0];
 
-        if (!KEY[0] && !jump_btn_d)
+        if (!KEY[0] && jump_btn_d)
         jump_req <= 1'b0;
-        else
+        else if(frame_tick)
         jump_req <= 1'b1;
     end
   end
