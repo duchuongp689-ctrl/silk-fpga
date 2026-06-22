@@ -108,11 +108,11 @@ module top_module (
     end
     else
     begin
-      jump_btn_d <= !KEY[0];
+      jump_btn_d <= KEY[0];
 
         if (!KEY[0] && !jump_btn_d)
         jump_req <= 1'b0;
-      else if (frame_tick)
+      else
         jump_req <= 1'b1;
     end
   end
