@@ -91,7 +91,7 @@ module top_module (
                      .vpos(pixel_y)
                    );
 
-  assign frame_tick = (pixel_x == 10'd0) && (pixel_y == 10'd0);
+  //assign frame_tick = (pixel_x == 10'd0) && (pixel_y == 10'd0);
 
   // =========================
   // Bắt cạnh nút nhảy, rồi giữ yêu cầu nhảy đến frame tiếp theo
@@ -112,7 +112,7 @@ module top_module (
 
         if (!KEY[0] && !jump_btn_d)
         jump_req <= 1'b0;
-      else
+        else
         jump_req <= 1'b1;
     end
   end
