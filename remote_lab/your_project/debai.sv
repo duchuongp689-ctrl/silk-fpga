@@ -113,7 +113,7 @@ module top_module (
       if (!KEY[0] && !jump_btn_d)
         jump_req <= 1'b0;
       else if (frame_tick)
-        jump_req <= 1'b1;
+        jump_req <= 1'b0;
     end
   end
 
