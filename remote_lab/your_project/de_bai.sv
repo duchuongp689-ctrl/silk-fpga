@@ -223,7 +223,7 @@ module game_ctrl (
       jump_req   <= 1'b0;
     end else begin
       jump_btn_d <= key_jump;
-      if (!key_jump && !jump_btn_d) 
+      if (key_jump && !jump_btn_d) 
         jump_req <= 1'b1;
       else if (frame_tick)
         jump_req <= 1'b0;
@@ -274,7 +274,7 @@ module game_ctrl (
         end
         S_RUN: begin
           if (hit) begin
-            state <= S_RUN; 
+            state <= S_GAME_OVER; 
           end else begin
             score <= score + 16'd1;
             if (score[7:0] == 8'hFF && speed < 4'd8)
@@ -490,7 +490,7 @@ module renderer #(
        (pixel_x >= dino_x) && (pixel_x < dino_x + DINO_W) &&
        (pixel_y >= dino_y) && (pixel_y < dino_y + DINO_H);
        
-  wire [9:0] local_x_full = pixel_x + dino_x; 
+    wire [9:0] local_x_full = pixel_x - dino_x; 
   wire [9:0] local_y_full = pixel_y - dino_y;
   wire [4:0] local_x = local_x_full[4:0];
   wire [4:0] local_y = local_y_full[4:0];
